@@ -179,6 +179,83 @@
 </section>
 
 <!-- ============================================================ -->
+<!-- БЛОК 3.5 — КТО ВЕДЁТ ТРЕНИРОВКИ (3 тренера)                   -->
+<!-- ============================================================ -->
+<section class="section coaches" id="coaches">
+  <div class="container">
+    <h2 class="section__title coaches__title">
+      Кто ведёт <span class="coaches__title-mark">твои тренировки</span>
+    </h2>
+    <p class="coaches__lead">
+      Три тренера, три стиля. Каждая вечеринка — это короткая нарезка под музыку.
+    </p>
+
+    <div class="coaches__grid">
+
+      <!-- ТРЕНЕР 1: НАСТЯ -->
+      <article class="coach-card">
+        <!-- ============================================ -->
+        <!-- 🎨 МЕСТО ПОД СКРИНШОТ из видео тренировки     -->
+        <!-- assets/coaches/nastya.webp                    -->
+        <!-- ============================================ -->
+        <div class="coach-card__photo coach-card__photo--placeholder">
+          <span>фото<br/>Настя</span>
+        </div>
+
+        <div class="coach-card__body">
+          <h3 class="coach-card__name">Настя</h3>
+          <p class="coach-card__role">Главный тренер клуба</p>
+
+          <!-- ============================================ -->
+          <!-- 🎬 МЕСТО ПОД ВИДЕО-НАРЕЗКУ (превью тренировки) -->
+          <!-- assets/coaches/nastya-preview.mp4             -->
+          <!-- ============================================ -->
+          <button class="coach-card__video-btn" type="button" data-popup="popup-video-nastya">
+            <span class="coach-card__video-icon">▶</span>
+            <span>Смотреть отрывок</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ТРЕНЕР 2: ДИМА -->
+      <article class="coach-card coach-card--featured">
+        <div class="coach-card__photo coach-card__photo--placeholder">
+          <span>фото<br/>Дима</span>
+        </div>
+
+        <div class="coach-card__body">
+          <h3 class="coach-card__name">Дима</h3>
+          <p class="coach-card__role">Основатель Шагай&nbsp;Дома</p>
+
+          <button class="coach-card__video-btn" type="button" data-popup="popup-video-dima">
+            <span class="coach-card__video-icon">▶</span>
+            <span>Смотреть отрывок</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- ТРЕНЕР 3: МАША -->
+      <article class="coach-card">
+        <div class="coach-card__photo coach-card__photo--placeholder">
+          <span>фото<br/>Маша</span>
+        </div>
+
+        <div class="coach-card__body">
+          <h3 class="coach-card__name">Маша</h3>
+          <p class="coach-card__role">Операционный директор</p>
+
+          <button class="coach-card__video-btn" type="button" data-popup="popup-video-masha">
+            <span class="coach-card__video-icon">▶</span>
+            <span>Смотреть отрывок</span>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- БЛОК 4 — ТАРИФЫ (4 ПРОХОДКИ)                                  -->
 <!-- ============================================================ -->
 <section class="section rates" id="rates">
@@ -384,6 +461,30 @@
 <!-- POPUP — placeholder под GetCourse-виджеты (4 шт)              -->
 <!-- ID виджетов даст Маша                                         -->
 <!-- ============================================================ -->
+<!-- POPUP — превью тренировок (3 видео-нарезки) -->
+<div class="popup popup--video" id="popup-video-nastya" aria-hidden="true">
+  <div class="popup__box popup__box--video">
+    <button class="popup__close" data-close aria-label="Закрыть">✕</button>
+    <h3>Настя</h3>
+    <!-- 🎬 Сюда вставить <video> или <iframe> с нарезкой -->
+    <div class="popup__video-placeholder">место под видео-нарезку Насти</div>
+  </div>
+</div>
+<div class="popup popup--video" id="popup-video-dima" aria-hidden="true">
+  <div class="popup__box popup__box--video">
+    <button class="popup__close" data-close aria-label="Закрыть">✕</button>
+    <h3>Дима</h3>
+    <div class="popup__video-placeholder">место под видео-нарезку Димы</div>
+  </div>
+</div>
+<div class="popup popup--video" id="popup-video-masha" aria-hidden="true">
+  <div class="popup__box popup__box--video">
+    <button class="popup__close" data-close aria-label="Закрыть">✕</button>
+    <h3>Маша</h3>
+    <div class="popup__video-placeholder">место под видео-нарезку Маши</div>
+  </div>
+</div>
+
 <div class="popup" id="popup-buy-entry" aria-hidden="true">
   <div class="popup__box">
     <button class="popup__close" data-close aria-label="Закрыть">✕</button>

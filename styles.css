@@ -3132,6 +3132,157 @@ section[id],
   .filling__bonuses { grid-template-columns: 1fr; }
 }
 
+/* ===== БЛОК 3.5 — КТО ВЕДЁТ ТРЕНИРОВКИ ===== */
+.coaches {
+  padding: 100px 0;
+  background: #fff;
+}
+.coaches__title {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: clamp(32px, 4.5vw, 56px);
+  text-align: center;
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+}
+.coaches__title-mark {
+  color: var(--color-primary);
+  background: linear-gradient(180deg, transparent 60%, rgba(250, 204, 21, 0.35) 60%);
+  padding: 0 0.1em;
+}
+.coaches__lead {
+  text-align: center;
+  font-size: 17px;
+  color: var(--color-muted);
+  margin: 0 auto 56px;
+  max-width: 620px;
+}
+.coaches__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.coach-card {
+  background: var(--color-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  display: flex;
+  flex-direction: column;
+}
+.coach-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.coach-card--featured {
+  background: linear-gradient(160deg, var(--color-primary) 0%, var(--color-accent-dark) 100%);
+  color: #fff;
+  box-shadow: var(--shadow-neon);
+}
+.coach-card__photo {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, #E5DDF1 0%, #C9B8E0 100%);
+  background-size: cover;
+  background-position: center;
+}
+.coach-card__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-h);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(109, 40, 217, 0.4);
+  text-align: center;
+}
+.coach-card--featured .coach-card__photo--placeholder {
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+  color: rgba(255, 255, 255, 0.45);
+}
+.coach-card__body {
+  padding: 28px 24px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.coach-card__name {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.coach-card__role {
+  margin: 0 0 16px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.coach-card__video-btn {
+  margin-top: auto;
+  background: transparent;
+  border: 2px solid currentColor;
+  color: inherit;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-b);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background .2s, color .2s, transform .15s;
+}
+.coach-card__video-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+.coach-card--featured .coach-card__video-btn:hover {
+  background: #FACC15;
+  color: #1A0B2E;
+  border-color: #FACC15;
+}
+.coach-card__video-icon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: currentColor;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--color-soft);
+}
+.coach-card--featured .coach-card__video-icon { color: var(--color-primary); }
+.coach-card--featured .coach-card__video-btn:hover .coach-card__video-icon { color: #FACC15; }
+.coach-card:not(.coach-card--featured) .coach-card__video-btn:hover .coach-card__video-icon { color: var(--color-primary); }
+
+@media (max-width: 900px) {
+  .coaches__grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .coaches { padding: 56px 0; }
+}
+
+/* Popup для видео-нарезок */
+.popup__box--video { max-width: 720px; width: 90vw; }
+.popup__video-placeholder {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #4C1D95 0%, #1A0B2E 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-h);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
 /* ===== БЛОК 4 — ТАРИФЫ ===== */
 .rates {
   padding: 100px 0;
