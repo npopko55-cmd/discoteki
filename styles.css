@@ -3135,7 +3135,10 @@ section[id],
 /* ===== БЛОК 3.5 — КТО ВЕДЁТ ТРЕНИРОВКИ ===== */
 .coaches {
   padding: 100px 0;
-  background: #fff;
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(109, 40, 217, 0.05) 0%, transparent 50%),
+    var(--color-soft);
 }
 .coaches__title {
   font-family: var(--font-h);
@@ -3163,12 +3166,13 @@ section[id],
   gap: 24px;
 }
 .coach-card {
-  background: var(--color-soft);
+  background: #fff;
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm);
 }
 .coach-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .coach-card--featured {
