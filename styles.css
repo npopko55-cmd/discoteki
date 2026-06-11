@@ -2986,8 +2986,9 @@ section[id],
   color: #1A0B2E;
   border-color: transparent;
 }
-.unique__stat--result h3 { color: #1A0B2E; }
-.unique__stat--result p { color: rgba(26, 11, 46, 0.75); }
+.unique__stat--result h3 { color: #fff; }
+.unique__stat--result p { color: rgba(255, 255, 255, 0.95); }
+.unique__stat--result .unique__stat-num { color: #fff; }
 .unique__stat-num {
   font-family: var(--font-h);
   font-weight: 600;
