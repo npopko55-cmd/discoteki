@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const PORT = 5175;
+const PORT = 5176;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',

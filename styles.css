@@ -2898,3 +2898,56 @@ section[id],
 .hero { background: var(--color-primary); }
 .hero__card { background: transparent; }
 /* «Шагай» лого в шапке — оставляем оригинальный красный (это часть бренда ШД) */
+
+/* Hero — расширенная левая колонка под длинное слово «Дискотеки» */
+.hero__grid { grid-template-columns: 1.3fr 1fr; }
+
+/* Hero h1 — «Дискотеки» крупно, «для похудения» меньшим шрифтом второй строкой */
+.hero__title { font-size: clamp(40px, 5.2vw, 72px); display: flex; flex-direction: column; gap: 0.1em; }
+.hero__title-boltword {
+  white-space: nowrap;
+  text-shadow: 0 0 32px rgba(250, 204, 21, 0.25), 0 0 64px rgba(236, 72, 153, 0.15);
+}
+.hero__title-boltline { stroke: #FACC15; }
+.hero__title-sub {
+  font-size: 0.48em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  opacity: 0.92;
+}
+@media (max-width: 768px) {
+  .hero__title { font-size: clamp(40px, 11vw, 64px); }
+  .hero__title-boltword { white-space: normal; }
+}
+
+/* Hero CTA в дискотеках — жёлтая на фиолете. Специфичность 0,3,0 чтобы
+   перебить anti-Tilda .btn.btn--white правило ниже. */
+.btn.btn--white.hero__cta {
+  background: #FACC15 !important;
+  color: #1A0B2E !important;
+  border-color: #FACC15 !important;
+}
+.btn.btn--white.hero__cta:hover,
+.btn.btn--white.hero__cta:active,
+.btn.btn--white.hero__cta:focus {
+  background: #FDE047 !important;
+  color: #1A0B2E !important;
+  border-color: #FDE047 !important;
+}
+.hero__cta-arrow {
+  background: #1A0B2E;
+  color: #FACC15;
+}
+
+/* Hero overlay декор: тонкие диагональные «лазерные» линии */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 47%, rgba(250, 204, 21, 0.06) 48%, rgba(250, 204, 21, 0.06) 49%, transparent 50%),
+    linear-gradient(115deg, transparent 67%, rgba(236, 72, 153, 0.08) 68%, rgba(236, 72, 153, 0.08) 69%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > .container { position: relative; z-index: 1; }
