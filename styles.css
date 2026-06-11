@@ -3305,8 +3305,10 @@ section[id],
 }
 .coaches__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  max-width: 880px;
+  margin: 0 auto;
 }
 .coach-card {
   background: #fff;
