@@ -101,6 +101,21 @@
   document.querySelectorAll('.popup [data-close]').forEach((el) => {
     el.addEventListener('click', closeAllPopups);
   });
+  // Клик по затемнённому фону попапа = закрытие
+  document.querySelectorAll('.popup').forEach((popup) => {
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) closeAllPopups();
+    });
+  });
+
+  /* ---------- Countdown — дни до старта 22 июня 2026 ---------- */
+  const daysEl = document.getElementById('daysToStart');
+  if (daysEl) {
+    const target = new Date('2026-06-22T00:00:00+03:00').getTime();
+    const ms = target - Date.now();
+    const days = Math.max(0, Math.ceil(ms / 86400000));
+    daysEl.textContent = days;
+  }
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeAllPopups();
