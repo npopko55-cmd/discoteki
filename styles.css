@@ -2898,6 +2898,44 @@ section[id],
 .hero { background: var(--color-primary); padding: 32px 0 80px; }
 .hero__card { background: transparent; padding: 24px 0; }
 
+/* ===== Hero «премьера» chip group ===== */
+.hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.hero__chip--premiere {
+  background: linear-gradient(135deg, #FACC15 0%, #EC4899 100%);
+  color: #1A0B2E;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 24px rgba(236, 72, 153, 0.4);
+  animation: premierePulse 2.5s ease-in-out infinite;
+}
+.hero__chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1A0B2E;
+  box-shadow: 0 0 0 0 rgba(26, 11, 46, 0.6);
+  animation: premiereDot 1.5s ease-out infinite;
+}
+@keyframes premierePulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(236, 72, 153, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(250, 204, 21, 0.6); }
+}
+@keyframes premiereDot {
+  0% { box-shadow: 0 0 0 0 rgba(26, 11, 46, 0.6); }
+  100% { box-shadow: 0 0 0 8px rgba(26, 11, 46, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__chip--premiere,
+  .hero__chip-dot { animation: none; }
+}
+
 /* ===== БЛОК 2 — УНИКАЛЬНЫЙ ФОРМАТ ===== */
 .unique {
   padding: 100px 0;
@@ -2905,6 +2943,32 @@ section[id],
     radial-gradient(ellipse at 80% 30%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 20% 70%, rgba(34, 211, 238, 0.06) 0%, transparent 50%),
     #fff;
+}
+.unique__premiere-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 auto 28px;
+  box-shadow: 0 0 24px rgba(236, 72, 153, 0.35);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.unique__premiere-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FACC15;
+  box-shadow: 0 0 8px #FACC15;
+  animation: premiereDot 1.5s ease-out infinite;
 }
 .unique__title {
   font-family: var(--font-h);
@@ -2915,6 +2979,28 @@ section[id],
   text-align: center;
   max-width: 920px;
   margin: 0 auto 28px;
+}
+/* Тейк с результатом «−1-2 кг за 7 дней» */
+.unique__stat--result {
+  background: linear-gradient(160deg, #FACC15 0%, #F59E0B 100%);
+  color: #1A0B2E;
+  border-color: transparent;
+}
+.unique__stat--result h3 { color: #1A0B2E; }
+.unique__stat--result p { color: rgba(26, 11, 46, 0.75); }
+.unique__stat-num {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.04em;
+}
+.unique__stat-num sup {
+  font-size: 0.4em;
+  font-weight: 500;
+  vertical-align: 0.6em;
+  margin-left: 2px;
 }
 .unique__title-mark {
   color: var(--color-primary);
@@ -3034,7 +3120,13 @@ section[id],
   margin: 0 auto 36px;
 }
 
-/* 7 вечеринок */
+/* 7 вечеринок — кликабельные карточки с видео-превью */
+.filling__hint {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.65;
+  margin: -20px 0 24px;
+}
 .filling__nights {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -3044,35 +3136,80 @@ section[id],
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
-  padding: 24px 20px;
+  padding: 0;
   text-align: left;
   position: relative;
-  transition: transform .2s, background .2s, border-color .2s;
+  transition: transform .2s, background .2s, border-color .2s, box-shadow .2s;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .night-card:hover {
-  transform: translateY(-4px);
-  background: rgba(236, 72, 153, 0.1);
-  border-color: rgba(236, 72, 153, 0.4);
+  transform: translateY(-6px);
+  background: rgba(236, 72, 153, 0.12);
+  border-color: rgba(236, 72, 153, 0.6);
+  box-shadow: 0 12px 32px rgba(236, 72, 153, 0.25);
+}
+.night-card__thumb {
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(250, 204, 21, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(109, 40, 217, 0.5) 0%, rgba(26, 11, 46, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.night-card__thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 47%, rgba(236, 72, 153, 0.08) 48%, rgba(236, 72, 153, 0.08) 49%, transparent 50%);
+}
+.night-card__play {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #FACC15;
+  color: #1A0B2E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 4px;
+  box-shadow: 0 0 32px rgba(250, 204, 21, 0.5);
+  transition: transform .2s, background .2s;
+  position: relative;
+  z-index: 1;
+}
+.night-card:hover .night-card__play {
+  transform: scale(1.12);
+  background: #FDE047;
 }
 .night-card__num {
   font-family: var(--font-h);
   font-weight: 600;
-  font-size: 36px;
+  font-size: 28px;
   color: #FACC15;
-  opacity: 0.5;
+  opacity: 0.55;
   line-height: 1;
-  margin-bottom: 12px;
+  margin: 18px 18px 8px;
 }
 .night-card h4 {
   font-family: var(--font-h);
   font-weight: 600;
-  font-size: 20px;
-  margin: 0 0 8px;
+  font-size: 19px;
+  margin: 0 18px 6px;
   color: #fff;
   letter-spacing: -0.01em;
 }
 .night-card p {
-  margin: 0;
+  margin: 0 18px 18px;
   font-size: 14px;
   opacity: 0.7;
   color: #fff;
@@ -3083,11 +3220,16 @@ section[id],
 }
 .night-card--final .night-card__num { color: #FACC15; opacity: 1; }
 .night-card--final p { opacity: 0.95; }
+.night-card--final .night-card__thumb {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(250, 204, 21, 0.3) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(236, 72, 153, 0.6) 0%, rgba(109, 40, 217, 0.8) 100%);
+}
 @media (max-width: 960px) {
   .filling__nights { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
-  .filling__nights { grid-template-columns: 1fr; }
+  .filling__nights { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
 }
 
 /* 3 бонуса */
