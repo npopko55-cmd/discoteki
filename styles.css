@@ -3710,3 +3710,158 @@ section[id],
 .rate-card--featured .rate-card__features-muted {
   border-top-color: rgba(255, 255, 255, 0.18);
 }
+
+/* =================================================================
+   DISCO POLISH PART 2 — правки по списку Ярослава
+   ================================================================= */
+
+/* Логотип в шапке — фиолетовый (вместо красного) */
+.header__logo svg path { fill: var(--color-primary) !important; }
+
+/* Шапка — увеличиваем отступы для воздуха */
+.section__title { margin-top: 0; }
+.unique__title,
+.filling__title,
+.coaches__title,
+.rates__title,
+.cases__title { padding-top: 8px; }
+.rates__title { margin-bottom: 48px; }
+
+/* Карточки в Блоке 2 — кастомные SVG-иконки в круге */
+.unique__stat-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(109, 40, 217, 0.1) 0%, rgba(236, 72, 153, 0.12) 100%);
+  color: var(--color-primary);
+  font-size: 0;
+  margin: 0 auto 18px;
+}
+.unique__stat-icon svg { width: 32px; height: 32px; }
+.unique__stat--featured .unique__stat-icon {
+  background: rgba(26, 11, 46, 0.18);
+  color: #1A0B2E;
+}
+.unique__stat--result.unique__stat--featured h3 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  letter-spacing: -0.04em;
+  margin: 8px 0 12px;
+}
+
+/* Бонус-карточки — кастомные SVG-иконки */
+.bonus-card__icon {
+  width: 68px;
+  height: 68px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 0;
+  margin: 0;
+}
+.bonus-card__icon svg { width: 48px; height: 48px; }
+.bonus-card--featured .bonus-card__icon { color: #1A0B2E; }
+
+/* ===== ВЕЧЕРИНКИ 4 + 1 широкая ===== */
+.filling__nights--4plus1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.filling__nights--4plus1 .night-card:nth-child(-n+4) {
+  /* первые 4 — обычные карточки */
+}
+.night-card--wide {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 28px 32px;
+  min-height: 0;
+  background: linear-gradient(90deg, rgba(109, 40, 217, 0.2) 0%, rgba(236, 72, 153, 0.18) 50%, rgba(34, 211, 238, 0.15) 100%);
+  border: 1px dashed rgba(250, 204, 21, 0.4);
+  cursor: default;
+}
+.night-card--wide:hover {
+  transform: none;
+  border-color: rgba(250, 204, 21, 0.55);
+}
+.night-card__plus {
+  font-size: 32px;
+  line-height: 1;
+  color: #FACC15;
+  font-family: var(--font-h);
+  font-weight: 300;
+}
+.night-card__wide-text {
+  margin: 0;
+  font-family: var(--font-h);
+  font-weight: 500;
+  font-size: clamp(16px, 1.6vw, 20px);
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 960px) {
+  .filling__nights--4plus1 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .filling__nights--4plus1 { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .night-card--wide { flex-direction: column; gap: 8px; padding: 20px; }
+  .night-card__wide-text { text-align: center; }
+}
+
+/* ===== ТРЕНЕРЫ — снова 3 колонки (Маша вернулась) ===== */
+.coaches__grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+@media (max-width: 900px) {
+  .coaches__grid {
+    grid-template-columns: 1fr !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* ===== ТАРИФЫ ===== */
+/* Тонкий фиолетовый контур на не-featured карточках */
+.rate-card:not(.rate-card--featured) {
+  border: 1.5px solid rgba(109, 40, 217, 0.25);
+  border-radius: var(--radius-lg);
+}
+.rate-card:not(.rate-card--featured):hover {
+  border-color: rgba(109, 40, 217, 0.5);
+}
+
+/* «X ₽ в месяц» — подпись под ценой, БЕЗ баббла */
+.rate-card__monthly {
+  background: transparent !important;
+  color: var(--color-muted) !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  display: block;
+  margin-top: 4px;
+  text-transform: none !important;
+}
+.rate-card--featured .rate-card__monthly {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* ===== ФУТЕР — выравнивание правого блока ===== */
+.footer__col--legal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: flex-start;
+}
+.footer__col--legal .footer__socials {
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
