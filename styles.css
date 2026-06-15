@@ -973,31 +973,9 @@ h1, h2, h3 { font-family: var(--font-h); font-weight: 500; margin: 0; line-heigh
 }
 
 /* === Hero-пункты с молнией вместо галочки === */
-.rate-card__features-hero {
-  font-size: 16px;
-  margin-bottom: 2px;
-  padding-left: 30px;
-  position: relative;
-}
-/* Второй hero-пункт (Абонемент в клуб) — с отступом сверху для визуального разделения */
-.rate-card__features-hero + .rate-card__features-hero {
-  margin-top: 6px;
-}
-/* Первый обычный пункт после hero (буллит клуба) — с маленьким отступом */
-.rate-card__features-hero + .rate-card__features-hero ~ li:not(.rate-card__features-hero):first-of-type {
-  margin-top: 4px;
-}
-.rate-card__features-hero::before {
-  content: "⚡" !important;
-  background: transparent !important;
-  border-radius: 0 !important;
-  width: auto !important;
-  height: auto !important;
-  font-size: 18px;
-  line-height: 1;
-  top: 0 !important;
-  left: 2px !important;
-}
+/* (legacy от шаблона интервалов с молнией ⚡ удалён —
+    теперь используется .rate-card__features-hero--intensive/--club
+    с цветной палочкой ::before в discoteki polish-секции ниже) */
 .rate-card__features-hero strong {
   color: var(--color-primary);
   font-weight: 600;
