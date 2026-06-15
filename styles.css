@@ -3940,51 +3940,48 @@ img.hero__image::after { display: none; }
   text-shadow: 0 0 24px rgba(250, 204, 21, 0.35);
 }
 
-/* Tariff card — два eyebrow-заголовка с молнией ⚡ в жёлтом круге */
+/* Tariff card — eyebrow-заголовки «Интенсив» / «+ клуб» с молнией ⚡ в жёлтом круге.
+   Молния — flex-элемент (::before), а не absolute → всегда по центру строки, не съезжает. */
 .rate-card__features-hero {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-top: 14px;
-  position: relative;
-  padding-left: 34px;
+  margin-top: 16px;
+  padding-left: 0 !important;     /* перебиваем базовое padding-left:30px от .rate-card__features li */
   list-style: none;
-  min-height: 24px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .rate-card__features-hero:first-child { margin-top: 0; }
-.rate-card__features-hero::before {
+/* Селектор с .rate-card__features перебивает базовое .rate-card__features li::before (0,2,1 > 0,1,2) */
+.rate-card__features .rate-card__features-hero::before {
   content: "⚡";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  flex: 0 0 auto;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background: #FACC15;
   color: #1A0B2E;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
   line-height: 1;
-  font-weight: 700;
+  position: static;            /* сбрасываем absolute от базового li::before */
+  top: auto;
+  left: auto;
+  transform: none;
 }
 .rate-card__features-hero--intensive { color: var(--color-accent); }
 .rate-card__features-hero--club {
   color: var(--color-primary);
-  padding-top: 18px;
-  margin-top: 18px;
+  padding-top: 16px;
+  margin-top: 16px;
   border-top: 1px dashed rgba(109, 40, 217, 0.18);
-  min-height: 42px;
 }
-.rate-card__features-hero--club::before {
-  top: calc(50% + 9px); /* учитывает padding-top */
-}
-/* Featured карточка — молния та же (жёлтая), а текст-заголовки контрастные на фиолетовом */
+/* Featured карточка — молния та же (жёлтая), текст-заголовки контрастные на фиолетовом */
 .rate-card--featured .rate-card__features-hero--intensive { color: #FACC15; }
 .rate-card--featured .rate-card__features-hero--club {
   color: #fff;
