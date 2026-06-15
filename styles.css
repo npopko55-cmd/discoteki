@@ -3703,17 +3703,35 @@ section[id],
   }
 }
 
-/* Muted строка под тарифом — мягче и обособленнее */
+/* Muted строка под тарифом — мягче и обособленнее (без галочки) */
 .rate-card__features-muted {
   list-style: none;
   margin-top: 12px;
   padding-top: 12px;
+  padding-left: 0 !important;
   border-top: 1px dashed rgba(0, 0, 0, 0.12);
   opacity: 0.7;
   font-size: 14px;
 }
+.rate-card__features-muted::before {
+  display: none !important;
+}
 .rate-card--featured .rate-card__features-muted {
   border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Featured-карточка: кнопка «Купить билет» — жёлтая (как hero CTA), для единого fastlane */
+.rate-card--featured .btn.btn--white {
+  background: #FACC15 !important;
+  color: #1A0B2E !important;
+  border-color: #FACC15 !important;
+}
+.rate-card--featured .btn.btn--white:hover,
+.rate-card--featured .btn.btn--white:focus,
+.rate-card--featured .btn.btn--white:active {
+  background: #FDE047 !important;
+  color: #1A0B2E !important;
+  border-color: #FDE047 !important;
 }
 
 /* =================================================================
