@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,cyrillic" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=disco-G" />
+  <link rel="stylesheet" href="styles.css?v=disco-H" />
 </head>
 <body>
 
@@ -65,9 +65,9 @@
         <p class="hero__lead">Жиросжигающий диско-интенсив <strong>22–28&nbsp;июня</strong>.</p>
 
         <ul class="hero__bullets">
-          <li>7 вечеринок под зажигательные треки</li>
-          <li>От 15 минут в&nbsp;день</li>
-          <li>Минус 1–2&nbsp;кг за&nbsp;неделю</li>
+          <li><svg class="hero__bullet-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#FACC15"/><path d="M5.5 10.5 L8.5 13.5 L14.5 7" fill="none" stroke="#1A0B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>7 вечеринок под зажигательные треки</span></li>
+          <li><svg class="hero__bullet-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#FACC15"/><path d="M5.5 10.5 L8.5 13.5 L14.5 7" fill="none" stroke="#1A0B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>От 15 минут в&nbsp;день</span></li>
+          <li><svg class="hero__bullet-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#FACC15"/><path d="M5.5 10.5 L8.5 13.5 L14.5 7" fill="none" stroke="#1A0B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Минус 1–2&nbsp;кг за&nbsp;неделю</span></li>
         </ul>
 
         <p class="hero__slogan">Идём на&nbsp;дискотеку и&nbsp;худеем в&nbsp;кайф!</p>
@@ -183,12 +183,6 @@
         <p class="night-card__desc">Закрытие интенсива</p>
         <span class="night-card__play" aria-hidden="true">▶</span>
       </button>
-
-      <!-- 5-я широкая, низкая — «и другое» -->
-      <div class="night-card night-card--wide" aria-hidden="true">
-        <span class="night-card__plus" aria-hidden="true">＋</span>
-        <p class="night-card__wide-text">А&nbsp;также другие тренировки и&nbsp;бонусы интенсива!</p>
-      </div>
     </div>
 
     <!-- Заголовок для бонусов -->
@@ -482,11 +476,17 @@
         </a>
         <!-- 🔗 TODO: вставить ссылку на Rutube канал -->
         <a href="#" target="_blank" rel="noopener" aria-label="Rutube">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.4 13.8h-1.9v3.3h-2.2v-3.3H7.1V6.7h2.2v5h4V6.7h2.2v3.3h1.9z"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+            <rect x="2" y="5" width="20" height="14" rx="3" fill="currentColor"/>
+            <path d="M10 9 v6 l5 -3 z" fill="#1A0B2E"/>
+          </svg>
         </a>
         <!-- 🔗 TODO: вставить ссылку на MAX-канал -->
         <a href="#" target="_blank" rel="noopener" aria-label="MAX">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M3 4 l5 0 l4 8 l4 -8 l5 0 l0 16 l-3 0 l0 -10 l-4 8 l-4 -8 l0 10 l-3 0 z" stroke="currentColor" stroke-width="0.4"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="currentColor"/>
+            <path d="M6 16 V8 l3 0 l3 5 l3 -5 l3 0 v8 l-2 0 V11 l-3 5 l-2 0 l-3 -5 v5 z" fill="#1A0B2E"/>
+          </svg>
         </a>
       </div>
 
@@ -574,6 +574,6 @@
 <!-- Back to top -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
 
-<script src="script.js?v=disco-G"></script>
+<script src="script.js?v=disco-H"></script>
 </body>
 </html>
