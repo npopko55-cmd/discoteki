@@ -3922,53 +3922,56 @@ img.hero__image::after { display: none; }
   text-shadow: 0 0 24px rgba(250, 204, 21, 0.35);
 }
 
-/* Tariff card — два смысловых блока: «Интенсив» и «+ клуб» */
+/* Tariff card — два eyebrow-заголовка с молнией ⚡ в жёлтом круге */
 .rate-card__features-hero {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   margin-top: 14px;
+  position: relative;
+  padding-left: 34px;
+  list-style: none;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
 }
 .rate-card__features-hero:first-child { margin-top: 0; }
-.rate-card__features-hero--intensive {
-  color: var(--color-accent);
-  position: relative;
-  padding-left: 16px;
-}
-.rate-card__features-hero--intensive::before {
-  content: '';
+.rate-card__features-hero::before {
+  content: "⚡";
   position: absolute;
   left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 4px;
-  border-radius: 2px;
-  background: var(--color-accent);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FACC15;
+  color: #1A0B2E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
 }
+.rate-card__features-hero--intensive { color: var(--color-accent); }
 .rate-card__features-hero--club {
   color: var(--color-primary);
-  position: relative;
-  padding-left: 16px;
-  padding-top: 16px;
+  padding-top: 18px;
+  margin-top: 18px;
   border-top: 1px dashed rgba(109, 40, 217, 0.18);
-  margin-top: 16px;
+  min-height: 42px;
 }
 .rate-card__features-hero--club::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 20px;
-  bottom: 4px;
-  width: 4px;
-  border-radius: 2px;
-  background: var(--color-primary);
+  top: calc(50% + 9px); /* учитывает padding-top */
 }
-/* В featured карточке — на белом тексте контрастные акценты */
+/* Featured карточка — молния та же (жёлтая), а текст-заголовки контрастные на фиолетовом */
 .rate-card--featured .rate-card__features-hero--intensive { color: #FACC15; }
-.rate-card--featured .rate-card__features-hero--intensive::before { background: #FACC15; }
-.rate-card--featured .rate-card__features-hero--club { color: #fff; border-top-color: rgba(255, 255, 255, 0.25); }
-.rate-card--featured .rate-card__features-hero--club::before { background: #fff; }
+.rate-card--featured .rate-card__features-hero--club {
+  color: #fff;
+  border-top-color: rgba(255, 255, 255, 0.25);
+}
 
 /* Final CTA — слоган «Танцуй / Кайфуй / Худей» */
 .final-cta__slogan {
