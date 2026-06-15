@@ -3380,6 +3380,22 @@ section[id],
 
 /* Popup для видео-нарезок */
 .popup__box--video { max-width: 720px; width: 90vw; }
+/* Kinescope iframe в попапе — квадрат 1:1 */
+.popup__kinescope-wrap {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  margin-top: 12px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+}
+.popup__kinescope-iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
 .popup__video-placeholder {
   aspect-ratio: 16 / 9;
   background: linear-gradient(135deg, #4C1D95 0%, #1A0B2E 100%);

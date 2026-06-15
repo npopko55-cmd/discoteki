@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,cyrillic" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=disco-M" />
+  <link rel="stylesheet" href="styles.css?v=disco-N" />
 </head>
 <body>
 
@@ -238,9 +238,10 @@
         <div class="coach-card__body">
           <h3 class="coach-card__name">Настя</h3>
           <p class="coach-card__role">Тренер</p>
-          <div class="coach-card__kinescope">
-            <script src="https://kinescope.io/6wLixev7GJi74sQ72RfGJ2/popup.js?aspect_ratio=1/1"></script>
-          </div>
+          <button class="coach-card__video-btn" type="button" data-popup="popup-video-nastya">
+            <span class="coach-card__video-icon" aria-hidden="true">▶</span>
+            <span>Смотреть отрывок</span>
+          </button>
         </div>
       </article>
 
@@ -252,9 +253,10 @@
         <div class="coach-card__body">
           <h3 class="coach-card__name">Дима</h3>
           <p class="coach-card__role">Тренер</p>
-          <div class="coach-card__kinescope">
-            <script src="https://kinescope.io/d1KVdLt5r9v33KrCRMMRiB/popup.js?aspect_ratio=1/1"></script>
-          </div>
+          <button class="coach-card__video-btn" type="button" data-popup="popup-video-dima">
+            <span class="coach-card__video-icon" aria-hidden="true">▶</span>
+            <span>Смотреть отрывок</span>
+          </button>
         </div>
       </article>
 
@@ -266,9 +268,10 @@
         <div class="coach-card__body">
           <h3 class="coach-card__name">Маша</h3>
           <p class="coach-card__role">Тренер</p>
-          <div class="coach-card__kinescope">
-            <script src="https://kinescope.io/d7kKLvZ53VaUUtpf6382Cv/popup.js?aspect_ratio=1/1"></script>
-          </div>
+          <button class="coach-card__video-btn" type="button" data-popup="popup-video-masha">
+            <span class="coach-card__video-icon" aria-hidden="true">▶</span>
+            <span>Смотреть отрывок</span>
+          </button>
         </div>
       </article>
 
@@ -505,7 +508,36 @@
 <!-- ID виджетов даст Маша                                         -->
 <!-- ============================================================ -->
 
-<!-- POPUP — превью тренировок (3 видео-нарезки) -->
+<!-- POPUP — превью тренировок (3 видео-нарезки через Kinescope iframe) -->
+<div class="popup popup--video" id="popup-video-nastya" aria-hidden="true">
+  <div class="popup__box popup__box--video">
+    <button class="popup__close" data-close aria-label="Закрыть">✕</button>
+    <h3>Настя</h3>
+    <div class="popup__kinescope-wrap">
+      <iframe class="popup__kinescope-iframe" src="about:blank" data-src="https://kinescope.io/6wLixev7GJi74sQ72RfGJ2" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+<div class="popup popup--video" id="popup-video-dima" aria-hidden="true">
+  <div class="popup__box popup__box--video">
+    <button class="popup__close" data-close aria-label="Закрыть">✕</button>
+    <h3>Дима</h3>
+    <div class="popup__kinescope-wrap">
+      <iframe class="popup__kinescope-iframe" src="about:blank" data-src="https://kinescope.io/d1KVdLt5r9v33KrCRMMRiB" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+<div class="popup popup--video" id="popup-video-masha" aria-hidden="true">
+  <div class="popup__box popup__box--video">
+    <button class="popup__close" data-close aria-label="Закрыть">✕</button>
+    <h3>Маша</h3>
+    <div class="popup__kinescope-wrap">
+      <iframe class="popup__kinescope-iframe" src="about:blank" data-src="https://kinescope.io/d7kKLvZ53VaUUtpf6382Cv" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP — GetCourse-виджеты тарифов -->
 <div class="popup" id="popup-buy-entry" aria-hidden="true">
   <div class="popup__box">
     <button class="popup__close" data-close aria-label="Закрыть">✕</button>
@@ -543,6 +575,6 @@
 <!-- Back to top -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
 
-<script src="script.js?v=disco-M"></script>
+<script src="script.js?v=disco-N"></script>
 </body>
 </html>

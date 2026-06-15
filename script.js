@@ -72,6 +72,10 @@
     popup.classList.add('is-open');
     popup.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    // Lazy-load iframe видео (Kinescope) при открытии
+    popup.querySelectorAll('iframe[data-src]').forEach((iframe) => {
+      if (iframe.src !== iframe.dataset.src) iframe.src = iframe.dataset.src;
+    });
     // фокус на крестик закрытия
     const closeBtn = popup.querySelector('.popup__close');
     if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
@@ -81,6 +85,10 @@
     document.querySelectorAll('.popup.is-open').forEach((p) => {
       p.classList.remove('is-open');
       p.setAttribute('aria-hidden', 'true');
+      // Останавливаем видео — сбрасываем iframe.src
+      p.querySelectorAll('iframe[data-src]').forEach((iframe) => {
+        iframe.src = 'about:blank';
+      });
     });
     document.body.style.overflow = '';
     // вернуть фокус на то что было до открытия
