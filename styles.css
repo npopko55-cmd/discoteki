@@ -3885,6 +3885,20 @@ section[id],
   flex-wrap: wrap;
 }
 
+/* Hero <img> — реальное фото вместо плейсхолдера */
+img.hero__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(109, 40, 217, 0.35);
+  min-height: 0 !important;
+}
+img.hero__image::after { display: none; }
+
 /* =================================================================
    DISCO POLISH PART 3 — тексты копирайтера + новые элементы
    ================================================================= */
