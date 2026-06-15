@@ -3122,16 +3122,10 @@ section[id],
   margin: 0 auto 36px;
 }
 
-/* 7 вечеринок — компактные текстовые карточки, play-иконка в углу */
-.filling__hint {
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.65;
-  margin: -16px 0 28px;
-}
+/* 7 вечеринок — 3 колонки, последняя (Финал) на всю ширину */
 .filling__nights {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 .night-card {
@@ -3141,19 +3135,11 @@ section[id],
   border-radius: var(--radius-md);
   padding: 24px 20px 22px;
   text-align: left;
-  transition: transform .2s, background .2s, border-color .2s, box-shadow .2s;
-  cursor: pointer;
   font-family: inherit;
   color: inherit;
   display: flex;
   flex-direction: column;
-  min-height: 168px;
-}
-.night-card:hover {
-  transform: translateY(-4px);
-  background: rgba(236, 72, 153, 0.1);
-  border-color: rgba(236, 72, 153, 0.5);
-  box-shadow: 0 10px 28px rgba(236, 72, 153, 0.22);
+  min-height: 140px;
 }
 .night-card__num {
   font-family: var(--font-h);
@@ -3178,35 +3164,18 @@ section[id],
   opacity: 0.7;
   color: #fff;
 }
-.night-card__play {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(250, 204, 21, 0.95);
-  color: #1A0B2E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  padding-left: 2px;
-  transition: transform .15s, background .15s, box-shadow .2s;
-  box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
-}
-.night-card:hover .night-card__play {
-  transform: scale(1.1);
-  background: #FDE047;
-  box-shadow: 0 0 24px rgba(250, 204, 21, 0.55);
-}
 .night-card--final {
+  grid-column: 1 / -1;
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
   border-color: transparent;
+  text-align: center;
+  align-items: center;
+  min-height: 0;
+  padding: 24px;
 }
 .night-card--final .night-card__num { color: #FACC15; opacity: 1; }
 .night-card--final .night-card__desc { opacity: 0.95; }
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .filling__nights { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {

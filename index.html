@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,cyrillic" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=disco-L" />
+  <link rel="stylesheet" href="styles.css?v=disco-M" />
 </head>
 <body>
 
@@ -149,40 +149,44 @@
       На&nbsp;танцполе тебя ждут <span class="filling__title-mark">треки от&nbsp;лучших диджеев</span>
     </h2>
 
-    <!-- 4 ВЕЧЕРИНКИ + 5-я широкая «и другое» -->
+    <!-- 7 ВЕЧЕРИНОК — просто карточки, без клика/видео -->
     <h3 class="filling__h3">7&nbsp;дней&nbsp;— разные вечеринки</h3>
-    <p class="filling__hint">Нажми на&nbsp;карточку&nbsp;— увидишь фрагмент дискотеки</p>
-    <div class="filling__nights filling__nights--4plus1">
-
-      <!-- ============================================ -->
-      <!-- 🎬 МЕСТО ПОД ВИДЕО-НАРЕЗКИ                    -->
-      <!-- Темы placeholder — Маша заменит когда монтаж  -->
-      <!-- ============================================ -->
-
-      <button class="night-card" type="button" data-popup="popup-night-1" aria-label="Смотреть отрывок — Disco 70s">
+    <div class="filling__nights">
+      <div class="night-card">
         <span class="night-card__num">01</span>
         <h4 class="night-card__title">Disco&nbsp;70s</h4>
         <p class="night-card__desc">Там, где всё началось</p>
-        <span class="night-card__play" aria-hidden="true">▶</span>
-      </button>
-      <button class="night-card" type="button" data-popup="popup-night-2" aria-label="Смотреть отрывок — Latino">
+      </div>
+      <div class="night-card">
         <span class="night-card__num">02</span>
         <h4 class="night-card__title">Latino</h4>
         <p class="night-card__desc">Заводим бёдра</p>
-        <span class="night-card__play" aria-hidden="true">▶</span>
-      </button>
-      <button class="night-card" type="button" data-popup="popup-night-3" aria-label="Смотреть отрывок — 90s House">
+      </div>
+      <div class="night-card">
         <span class="night-card__num">03</span>
         <h4 class="night-card__title">90s&nbsp;House</h4>
         <p class="night-card__desc">Твоя юность</p>
-        <span class="night-card__play" aria-hidden="true">▶</span>
-      </button>
-      <button class="night-card" type="button" data-popup="popup-night-4" aria-label="Смотреть отрывок — Финал">
+      </div>
+      <div class="night-card">
         <span class="night-card__num">04</span>
+        <h4 class="night-card__title">Funk</h4>
+        <p class="night-card__desc">Для уверенных</p>
+      </div>
+      <div class="night-card">
+        <span class="night-card__num">05</span>
+        <h4 class="night-card__title">Retro&nbsp;Pop</h4>
+        <p class="night-card__desc">На любимые треки</p>
+      </div>
+      <div class="night-card">
+        <span class="night-card__num">06</span>
+        <h4 class="night-card__title">Electro</h4>
+        <p class="night-card__desc">Для энергичных</p>
+      </div>
+      <div class="night-card night-card--final">
+        <span class="night-card__num">07</span>
         <h4 class="night-card__title">Финал</h4>
         <p class="night-card__desc">Закрытие интенсива</p>
-        <span class="night-card__play" aria-hidden="true">▶</span>
-      </button>
+      </div>
     </div>
 
     <!-- Заголовок для бонусов -->
@@ -500,14 +504,6 @@
 <!-- POPUP — placeholder под GetCourse-виджеты (4 шт)              -->
 <!-- ID виджетов даст Маша                                         -->
 <!-- ============================================================ -->
-<!-- POPUP — видео-нарезки каждой вечеринки (7 шт) -->
-<div class="popup popup--video" id="popup-night-1" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>Disco 70s</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
-<div class="popup popup--video" id="popup-night-2" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>Latino</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
-<div class="popup popup--video" id="popup-night-3" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>90s House</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
-<div class="popup popup--video" id="popup-night-4" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>Funk</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
-<div class="popup popup--video" id="popup-night-5" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>Retro Pop</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
-<div class="popup popup--video" id="popup-night-6" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>Electro</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
-<div class="popup popup--video" id="popup-night-7" aria-hidden="true"><div class="popup__box popup__box--video"><button class="popup__close" data-close aria-label="Закрыть">✕</button><h3>Финал</h3><div class="popup__video-placeholder">место под видео-нарезку</div></div></div>
 
 <!-- POPUP — превью тренировок (3 видео-нарезки) -->
 <div class="popup" id="popup-buy-entry" aria-hidden="true">
@@ -547,6 +543,6 @@
 <!-- Back to top -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
 
-<script src="script.js?v=disco-L"></script>
+<script src="script.js?v=disco-M"></script>
 </body>
 </html>
