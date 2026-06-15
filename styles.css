@@ -3865,3 +3865,134 @@ section[id],
   margin: 16px 0;
   flex-wrap: wrap;
 }
+
+/* =================================================================
+   DISCO POLISH PART 3 — тексты копирайтера + новые элементы
+   ================================================================= */
+
+/* Hero — буллеты «7 вечеринок / 15 минут / -1-2 кг» */
+.hero__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero__bullets li {
+  position: relative;
+  padding-left: 28px;
+  color: #fff;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.4;
+}
+.hero__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FACC15;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.55);
+}
+.hero__bullets li::after {
+  content: '✓';
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1A0B2E;
+  line-height: 1;
+}
+.hero__slogan {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: clamp(18px, 1.6vw, 24px);
+  color: #FACC15;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 24px rgba(250, 204, 21, 0.35);
+}
+
+/* Tariff card — два смысловых блока: «Интенсив» и «+ клуб» */
+.rate-card__features-hero {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+.rate-card__features-hero:first-child { margin-top: 0; }
+.rate-card__features-hero--intensive {
+  color: var(--color-accent);
+  position: relative;
+  padding-left: 16px;
+}
+.rate-card__features-hero--intensive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+.rate-card__features-hero--club {
+  color: var(--color-primary);
+  position: relative;
+  padding-left: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(109, 40, 217, 0.18);
+  margin-top: 16px;
+}
+.rate-card__features-hero--club::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+/* В featured карточке — на белом тексте контрастные акценты */
+.rate-card--featured .rate-card__features-hero--intensive { color: #FACC15; }
+.rate-card--featured .rate-card__features-hero--intensive::before { background: #FACC15; }
+.rate-card--featured .rate-card__features-hero--club { color: #fff; border-top-color: rgba(255, 255, 255, 0.25); }
+.rate-card--featured .rate-card__features-hero--club::before { background: #fff; }
+
+/* Final CTA — слоган «Танцуй / Кайфуй / Худей» */
+.final-cta__slogan {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 16px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.final-cta__slogan li {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 32px);
+  color: #FACC15;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 24px rgba(250, 204, 21, 0.4);
+}
+.final-cta__slogan li:nth-child(2) { color: var(--color-accent); text-shadow: 0 0 24px rgba(236, 72, 153, 0.4); }
+.final-cta__slogan li:nth-child(3) { color: var(--color-cool); text-shadow: 0 0 24px rgba(34, 211, 238, 0.4); }
+.final-cta__date {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-family: var(--font-h);
+  font-weight: 500;
+  font-size: 15px;
+  color: #FACC15;
+  margin-bottom: 24px;
+}
