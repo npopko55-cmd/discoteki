@@ -3166,15 +3166,48 @@ section[id],
 }
 .night-card--final {
   grid-column: 1 / -1;
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  background:
+    linear-gradient(125deg,
+      #FACC15 0%,
+      #EC4899 30%,
+      #6D28D9 60%,
+      #22D3EE 100%
+    );
   border-color: transparent;
   text-align: center;
   align-items: center;
   min-height: 0;
-  padding: 24px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 12px 40px rgba(236, 72, 153, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset;
 }
-.night-card--final .night-card__num { color: #FACC15; opacity: 1; }
-.night-card--final .night-card__desc { opacity: 0.95; }
+.night-card--final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.25) 0%, transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.18) 0%, transparent 40%);
+  pointer-events: none;
+}
+.night-card--final > * { position: relative; z-index: 1; }
+.night-card--final .night-card__num {
+  color: #fff;
+  opacity: 1;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+}
+.night-card--final .night-card__title {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+.night-card--final .night-card__desc {
+  color: #fff;
+  opacity: 0.95;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
 @media (max-width: 768px) {
   .filling__nights { grid-template-columns: repeat(2, 1fr); }
 }
