@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,cyrillic" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=disco-Y" />
+  <link rel="stylesheet" href="styles.css?v=disco-Z" />
 </head>
 <body>
 
@@ -275,82 +275,82 @@
   <div class="container">
     <h2 class="section__title rates__title">Выбери <span class="rates__title-mark">тариф</span></h2>
 
-    <div class="rates__grid">
+    <div class="tariffs">
 
       <!-- 1. ДЛЯ ПРОБЫ — 990 ₽ -->
-      <article class="rate-card">
-        <span class="rate-card__badge-top rate-card__badge-top--entry">Для пробы</span>
-        <h3 class="rate-card__title">Только дискотеки</h3>
-        <div class="rate-card__price">
-          <span class="rate-card__new">990&nbsp;₽</span>
-          <span class="rate-card__monthly">за 7&nbsp;дней</span>
+      <article class="tariff">
+        <span class="tariff__badge tariff__badge--entry">Для пробы</span>
+        <h3 class="tariff__name">Только дискотеки</h3>
+        <div class="tariff__price">
+          <span class="tariff__amount">990&nbsp;₽</span>
+          <span class="tariff__period">за 7&nbsp;дней</span>
         </div>
-        <ul class="rate-card__features">
-          <li class="rate-card__features-hero rate-card__features-hero--intensive">Интенсив:</li>
+        <ul class="tariff__list">
+          <li class="tariff__group tariff__group--intensive">Интенсив</li>
           <li>7 танцевальных вечеринок</li>
           <li>Ресторан&nbsp;— 28&nbsp;блюд</li>
           <li>Бар&nbsp;— 10&nbsp;коктейлей</li>
           <li>Гримёрка&nbsp;— мастер-класс</li>
-          <li class="rate-card__features-muted">Без доступа в&nbsp;клуб Шагай&nbsp;Дома.</li>
         </ul>
-        <button type="button" class="btn btn--primary btn--block" data-popup="popup-buy-entry" data-metrika-goal="disco-rate-entry-click">Купить билет</button>
+        <p class="tariff__note">Без доступа в&nbsp;клуб Шагай&nbsp;Дома</p>
+        <button type="button" class="tariff__btn" data-popup="popup-buy-entry" data-metrika-goal="disco-rate-entry-click">Купить билет</button>
       </article>
 
       <!-- 2. БИЛЕТ НА ЛЕТО — 3 490 ₽ -->
-      <article class="rate-card">
-        <span class="rate-card__badge-top">Билет на лето</span>
-        <h3 class="rate-card__title">Дискотеки + клуб на 2 месяца</h3>
-        <div class="rate-card__price">
-          <span class="rate-card__new">3&nbsp;490&nbsp;₽</span>
-          <span class="rate-card__monthly">1&nbsp;745&nbsp;₽ в&nbsp;месяц</span>
+      <article class="tariff">
+        <span class="tariff__badge">Билет на лето</span>
+        <h3 class="tariff__name">Дискотеки + клуб<br/>на&nbsp;2&nbsp;месяца</h3>
+        <div class="tariff__price">
+          <span class="tariff__amount">3&nbsp;490&nbsp;₽</span>
+          <span class="tariff__period">1&nbsp;745&nbsp;₽ в&nbsp;месяц</span>
         </div>
-        <ul class="rate-card__features">
-          <li class="rate-card__features-hero rate-card__features-hero--intensive">Интенсив:</li>
+        <ul class="tariff__list">
+          <li class="tariff__group tariff__group--intensive">Интенсив</li>
           <li>Дискотеки, ресторан, бар, гримёрка</li>
-          <li class="rate-card__features-hero rate-card__features-hero--club">+ клуб Шагай&nbsp;Дома на 2 месяца:</li>
+          <li class="tariff__group tariff__group--club">+ клуб Шагай&nbsp;Дома · 2&nbsp;мес</li>
           <li>350+ тренировок</li>
           <li>60 рецептов от&nbsp;диетолога</li>
           <li>Чат участниц и&nbsp;куратор</li>
         </ul>
-        <button type="button" class="btn btn--primary btn--block" data-popup="popup-buy-summer" data-metrika-goal="disco-rate-summer-click">Купить билет</button>
+        <button type="button" class="tariff__btn" data-popup="popup-buy-summer" data-metrika-goal="disco-rate-summer-click">Купить билет</button>
       </article>
 
-      <!-- 3. ДИСКОТЕКИ + 6 МЕСЯЦЕВ КЛУБА — 4 490 ₽ (ХИТ ПРОДАЖ) -->
-      <article class="rate-card rate-card--featured">
-        <span class="rate-card__badge-top">Хит продаж</span>
-        <h3 class="rate-card__title">Дискотеки + клуб на 6&nbsp;месяцев</h3>
-        <div class="rate-card__price">
-          <span class="rate-card__new">4&nbsp;490&nbsp;₽</span>
-          <span class="rate-card__monthly">748&nbsp;₽ в&nbsp;месяц</span>
+      <!-- 3. ХИТ ПРОДАЖ — 4 490 ₽ -->
+      <article class="tariff tariff--featured">
+        <span class="tariff__badge tariff__badge--hit">🔥 Хит продаж</span>
+        <h3 class="tariff__name">Дискотеки + клуб<br/>на&nbsp;6&nbsp;месяцев</h3>
+        <div class="tariff__price">
+          <span class="tariff__amount">4&nbsp;490&nbsp;₽</span>
+          <span class="tariff__period">748&nbsp;₽ в&nbsp;месяц</span>
         </div>
-        <ul class="rate-card__features">
-          <li class="rate-card__features-hero rate-card__features-hero--intensive">Интенсив:</li>
+        <ul class="tariff__list">
+          <li class="tariff__group tariff__group--intensive">Интенсив</li>
           <li>Дискотеки, ресторан, бар, гримёрка</li>
-          <li class="rate-card__features-hero rate-card__features-hero--club">+ клуб Шагай&nbsp;Дома на 6 месяцев:</li>
+          <li class="tariff__group tariff__group--club">+ клуб Шагай&nbsp;Дома · 6&nbsp;мес</li>
           <li>350+ тренировок</li>
           <li>60 рецептов от&nbsp;диетолога</li>
           <li>Чат, куратор, поддержка</li>
         </ul>
-        <button type="button" class="btn btn--white btn--block" data-popup="popup-buy-vip" data-metrika-goal="disco-rate-vip-click">Купить билет</button>
+        <button type="button" class="tariff__btn tariff__btn--accent" data-popup="popup-buy-vip" data-metrika-goal="disco-rate-vip-click">Купить билет</button>
       </article>
 
-      <!-- 4. РЕЗИДЕНТ — 8 990 ₽ -->
-      <article class="rate-card">
-        <span class="rate-card__badge-top rate-card__badge-top--best">Самый выгодный</span>
-        <h3 class="rate-card__title">Дискотеки + клуб на 2 года</h3>
-        <div class="rate-card__price">
-          <span class="rate-card__new">8&nbsp;990&nbsp;₽</span>
-          <span class="rate-card__monthly">375&nbsp;₽ в&nbsp;месяц</span>
+      <!-- 4. САМЫЙ ВЫГОДНЫЙ — 8 990 ₽ -->
+      <article class="tariff">
+        <span class="tariff__badge tariff__badge--best">Самый выгодный</span>
+        <h3 class="tariff__name">Дискотеки + клуб<br/>на&nbsp;2&nbsp;года</h3>
+        <div class="tariff__price">
+          <span class="tariff__amount">8&nbsp;990&nbsp;₽</span>
+          <span class="tariff__period">375&nbsp;₽ в&nbsp;месяц</span>
         </div>
-        <ul class="rate-card__features">
-          <li class="rate-card__features-hero rate-card__features-hero--intensive">Интенсив:</li>
+        <ul class="tariff__list">
+          <li class="tariff__group tariff__group--intensive">Интенсив</li>
           <li>Дискотеки, ресторан, бар, гримёрка</li>
-          <li class="rate-card__features-hero rate-card__features-hero--club">+ клуб Шагай&nbsp;Дома на 2 года:</li>
+          <li class="tariff__group tariff__group--club">+ клуб Шагай&nbsp;Дома · 2&nbsp;года</li>
           <li>350+ тренировок</li>
           <li>Бесплатное пополнение программ</li>
           <li>60 рецептов от&nbsp;диетолога</li>
         </ul>
-        <button type="button" class="btn btn--primary btn--block" data-popup="popup-buy-resident" data-metrika-goal="disco-rate-resident-click">Купить билет</button>
+        <button type="button" class="tariff__btn" data-popup="popup-buy-resident" data-metrika-goal="disco-rate-resident-click">Купить билет</button>
       </article>
 
     </div>
@@ -565,6 +565,6 @@
 <!-- Back to top -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
 
-<script src="script.js?v=disco-Y"></script>
+<script src="script.js?v=disco-Z"></script>
 </body>
 </html>

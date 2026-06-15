@@ -4019,3 +4019,218 @@ img.hero__image::after { display: none; }
   color: #FACC15;
   margin-bottom: 24px;
 }
+
+/* =================================================================
+   ТАРИФЫ v2 — чистый блок на классах .tariff* (без legacy rate-card)
+   ================================================================= */
+.tariffs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 1080px) {
+  .tariffs { grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 680px; }
+}
+@media (max-width: 560px) {
+  .tariffs { grid-template-columns: 1fr; max-width: 420px; }
+}
+
+.tariff {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1.5px solid rgba(109, 40, 217, 0.16);
+  border-radius: 22px;
+  padding: 30px 24px 26px;
+  box-shadow: 0 6px 24px rgba(26, 11, 46, 0.05);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.tariff:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(109, 40, 217, 0.18);
+  border-color: rgba(109, 40, 217, 0.4);
+}
+
+/* Featured — фиолетовая заливка, приподнята */
+.tariff--featured {
+  background: linear-gradient(165deg, #7C3AED 0%, #5B21B6 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(109, 40, 217, 0.4);
+}
+@media (min-width: 1081px) {
+  .tariff--featured { transform: scale(1.04); }
+  .tariff--featured:hover { transform: scale(1.04) translateY(-6px); }
+}
+
+/* Бейдж сверху по центру */
+.tariff__badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-b);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #EDE7F6;
+  color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(26, 11, 46, 0.12);
+}
+.tariff__badge--entry { background: #CFFAFE; color: #0E7490; }
+.tariff__badge--best  { background: #1A0B2E; color: #FACC15; }
+.tariff__badge--hit   { background: #FACC15; color: #1A0B2E; }
+
+/* Название тарифа */
+.tariff__name {
+  font-family: var(--font-h);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 10px 0 0;
+  min-height: 48px;            /* ровняем цену во всех карточках */
+  color: inherit;
+}
+@media (max-width: 560px) {
+  .tariff__name { min-height: 0; }
+  .tariff__name br { display: none; }
+}
+
+/* Цена */
+.tariff__price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 14px 0 18px;
+}
+.tariff__amount {
+  font-family: var(--font-h);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: inherit;
+}
+.tariff--featured .tariff__amount { color: #FACC15; }
+.tariff__period {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+.tariff--featured .tariff__period { color: rgba(255, 255, 255, 0.75); }
+
+/* Список фич */
+.tariff__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;                     /* кнопка прижимается к низу — выравнивание по всем карточкам */
+  font-size: 14px;
+  line-height: 1.35;
+}
+/* Обычный пункт — галочка-кружок */
+.tariff__list > li {
+  position: relative;
+  padding-left: 26px;
+  color: inherit;
+}
+.tariff__list > li:not(.tariff__group)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(109, 40, 217, 0.12)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-5" stroke="%236D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>')
+    center / 11px no-repeat;
+}
+.tariff--featured .tariff__list > li:not(.tariff__group)::before {
+  background: rgba(255, 255, 255, 0.2)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-5" stroke="%23FACC15" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>')
+    center / 11px no-repeat;
+}
+
+/* Группа-заголовок с молнией в круге, на одной линии с текстом */
+.tariff__group {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-left: 0 !important;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.tariff__group::before {
+  content: "⚡";
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  background: #FACC15;
+  color: #1A0B2E;
+}
+.tariff__group--intensive { color: var(--color-accent); }
+.tariff__group--club {
+  color: var(--color-primary);
+  margin-top: 6px;
+  padding-top: 14px !important;
+  border-top: 1px dashed rgba(109, 40, 217, 0.18);
+}
+.tariff--featured .tariff__group--intensive { color: #FACC15; }
+.tariff--featured .tariff__group--club {
+  color: #fff;
+  border-top-color: rgba(255, 255, 255, 0.28);
+}
+
+/* Заметка «без доступа в клуб» — без маркера */
+.tariff__note {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(109, 40, 217, 0.18);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* Кнопка */
+.tariff__btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-b);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  background: var(--color-primary);
+  color: #fff;
+  transition: background .2s ease, transform .15s ease;
+}
+.tariff__btn:hover { background: #5B21B6; }
+.tariff__btn:active { transform: translateY(1px); }
+.tariff__btn:focus-visible { outline: 3px solid #FACC15; outline-offset: 3px; }
+/* Кнопка в featured-карточке — жёлтая */
+.tariff__btn--accent {
+  background: #FACC15;
+  color: #1A0B2E;
+}
+.tariff__btn--accent:hover { background: #FDE047; }
