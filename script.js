@@ -16,6 +16,21 @@
   const year = document.getElementById('footerYear');
   if (year) year.textContent = new Date().getFullYear();
 
+  /* ---------- 1b. Hero-видео: гарантированный авто-старт (muted loop, как гифка) ---------- */
+  (() => {
+    const v = document.querySelector('.hero__image-wrap video, video.hero__image');
+    if (!v) return;
+    v.muted = true; // браузеры пускают автоплей только для muted
+    const tryPlay = () => { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); };
+    tryPlay();
+    // Если автоплей заблокирован — стартуем при первом действии пользователя
+    const evts = ['touchstart', 'scroll', 'click', 'keydown'];
+    const kick = () => { tryPlay(); evts.forEach((e) => window.removeEventListener(e, kick)); };
+    evts.forEach((e) => window.addEventListener(e, kick, { passive: true }));
+    // Когда вкладка снова становится видимой — продолжаем
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+  })();
+
   /* ---------- 2. Sticky header (тень при скролле) ---------- */
   const header = document.getElementById('header');
   const onScrollHeader = () => {
@@ -199,56 +214,95 @@
     });
   });
 
-  /* ---------- 9. UTM-проброс на все ссылки walk-walk.ru ---------- */
-  /* GetCourse-виджет вкорячивает свою кнопку с захардкоженной ссылкой
-     (walk-walk.ru/thinbelly/6-months и т.п.) уже ПОСЛЕ того как Tilda
-     прокинула UTM по странице. Мы должны:
-     1) При загрузке — обновить все существующие ссылки
-     2) Через MutationObserver — обновлять любые НОВЫЕ ссылки (от виджета)
-     3) При клике (capture-фаза) — финальная страховка перед навигацией */
+  /* ---------- 9. UTM-проброс: ссылки + ФОРМЫ GetCourse ---------- */
+  /* Метки нужно донести до оплаты в GetCourse. Виджет GetCourse рендерит
+     не <a>, а ФОРМУ, которая сабмитом уходит на новую страницу
+     my.walk-walk.ru — поэтому раньше метки терялись (проброс был только
+     для ссылок). Покрываем 4 канала:
+       1) <a> на walk-walk.ru — добавляем UTM в href
+       2) <form> — добавляем UTM в action И скрытыми полями (GetCourse читает их в заказ)
+       3) MutationObserver — догоняем элементы, которые виджет вставляет позже
+       4) click / submit (capture) — финальная страховка перед навигацией
+     Метки также кладём в sessionStorage и восстанавливаем при переходах
+     внутри сайта без меток в URL. */
   (function () {
-    var p = new URLSearchParams(window.location.search);
     var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_referrer','gclid','yclid','fbclid','erid','from'];
-    var pairs = keys
-      .map(function (k) { return p.has(k) ? k + '=' + encodeURIComponent(p.get(k)) : null; })
-      .filter(Boolean);
-    if (!pairs.length) return;
-    var qs = pairs.join('&');
-    try { sessionStorage.setItem('walkwalk_utm', qs); } catch (e) {}
+    var p = new URLSearchParams(window.location.search);
 
-    function applyUtm(a) {
-      if (!a || a.tagName !== 'A') return;
-      var href = a.getAttribute('href');
-      if (!href) return;
-      // только walk-walk.ru (любой поддомен)
-      if (!/walk-walk\.ru/i.test(href)) return;
-      // уже есть UTM — не трогаем
-      if (/[?&]utm_/.test(href)) return;
-      var sep = href.indexOf('?') === -1 ? '?' : '&';
-      a.setAttribute('href', href + sep + qs);
+    // Если в URL меток нет — пробуем восстановить из sessionStorage
+    var hasAny = keys.some(function (k) { return p.has(k); });
+    if (!hasAny) {
+      try {
+        var saved = sessionStorage.getItem('walkwalk_utm');
+        if (saved) {
+          var sp = new URLSearchParams(saved);
+          keys.forEach(function (k) { if (sp.has(k) && !p.has(k)) p.set(k, sp.get(k)); });
+        }
+      } catch (e) {}
     }
 
-    // 1. Все ссылки на момент загрузки
-    document.querySelectorAll('a[href]').forEach(applyUtm);
+    var present = keys.filter(function (k) { return p.has(k) && p.get(k) !== ''; });
+    if (!present.length) return;
 
-    // 2. MutationObserver — догоняем ссылки от GetCourse-виджета
+    var qs = present.map(function (k) { return k + '=' + encodeURIComponent(p.get(k)); }).join('&');
+    try { sessionStorage.setItem('walkwalk_utm', qs); } catch (e) {}
+
+    function isWW(url) { return /walk-walk\.ru/i.test(url || ''); }
+
+    function applyToLink(a) {
+      if (!a || a.tagName !== 'A') return;
+      var href = a.getAttribute('href');
+      if (!href || !isWW(href) || /[?&]utm_/.test(href)) return;
+      a.setAttribute('href', href + (href.indexOf('?') === -1 ? '?' : '&') + qs);
+    }
+
+    function applyToForm(f) {
+      if (!f || f.tagName !== 'FORM') return;
+      // 1) UTM в action, если форма уходит на walk-walk.ru
+      var action = f.getAttribute('action') || '';
+      if (isWW(action) && !/[?&]utm_/.test(action)) {
+        f.setAttribute('action', action + (action.indexOf('?') === -1 ? '?' : '&') + qs);
+      }
+      // 2) Скрытые поля — GetCourse подхватывает их в заказ
+      present.forEach(function (k) {
+        if (f.querySelector('input[name="' + k + '"]')) return;
+        var inp = document.createElement('input');
+        inp.type = 'hidden'; inp.name = k; inp.value = p.get(k);
+        f.appendChild(inp);
+      });
+    }
+
+    function applyIn(root) {
+      var scope = (root && root.querySelectorAll) ? root : document;
+      scope.querySelectorAll('a[href]').forEach(applyToLink);
+      scope.querySelectorAll('form').forEach(applyToForm);
+    }
+
+    // 1. Всё, что есть на момент загрузки
+    applyIn(document);
+
+    // 2. MutationObserver — догоняем элементы виджета GetCourse
     if (window.MutationObserver) {
-      var mo = new MutationObserver(function (mutations) {
-        mutations.forEach(function (m) {
+      var mo = new MutationObserver(function (muts) {
+        muts.forEach(function (m) {
           m.addedNodes && m.addedNodes.forEach(function (node) {
             if (node.nodeType !== 1) return;
-            if (node.tagName === 'A') applyUtm(node);
-            if (node.querySelectorAll) node.querySelectorAll('a[href]').forEach(applyUtm);
+            if (node.tagName === 'A') applyToLink(node);
+            if (node.tagName === 'FORM') applyToForm(node);
+            if (node.querySelectorAll) applyIn(node);
           });
         });
       });
       mo.observe(document.body, { childList: true, subtree: true });
     }
 
-    // 3. Capture-фаза клика — финальная страховка (если виджет меняет href в последний момент)
+    // 3. click / submit (capture) — финальная страховка перед навигацией
     document.addEventListener('click', function (e) {
       var a = e.target && e.target.closest && e.target.closest('a[href]');
-      if (a) applyUtm(a);
+      if (a) applyToLink(a);
+    }, true);
+    document.addEventListener('submit', function (e) {
+      if (e.target && e.target.tagName === 'FORM') applyToForm(e.target);
     }, true);
   })();
 
