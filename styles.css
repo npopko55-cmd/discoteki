@@ -4211,7 +4211,7 @@ img.hero__image::after { display: none; }
   color: var(--color-muted);
 }
 
-/* Кнопка */
+/* Кнопка (рендерится как <a>-ссылка) */
 .tariff__btn {
   margin-top: 20px;
   width: 100%;
@@ -4225,6 +4225,10 @@ img.hero__image::after { display: none; }
   background: var(--color-primary);
   color: #fff;
   transition: background .2s ease, transform .15s ease;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 .tariff__btn:hover { background: #5B21B6; }
 .tariff__btn:active { transform: translateY(1px); }
