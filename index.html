@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Inter:wght@400;500;600&display=swap&subset=latin,cyrillic" rel="stylesheet" />
 
+  <link rel="preload" as="image" href="assets/hero/hero-disco.webp" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css?v=disco-AC" />
 </head>
 <body>
@@ -81,7 +82,7 @@
       </div>
 
       <div class="hero__image-wrap">
-        <video class="hero__image" autoplay muted loop playsinline preload="auto" poster="assets/hero/hero-disco.webp" width="720" height="720" aria-label="Шагательные движения из тренировки" fetchpriority="high">
+        <video class="hero__image" autoplay muted loop playsinline preload="metadata" poster="assets/hero/hero-disco.webp" width="720" height="720" aria-label="Шагательные движения из тренировки">
           <source src="assets/hero/hero-disco.mp4" type="video/mp4" />
           <img class="hero__image" src="assets/hero/hero-disco.webp" alt="Танцующие участники интенсива в клубной атмосфере" width="1200" height="1200" />
         </video>

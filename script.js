@@ -31,6 +31,26 @@
     document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
   })();
 
+  /* ---------- 1c. Подстраховка lazy-фото: гарантированно догружаем ---------- */
+  /* Нативный lazy иногда не догружает фото (особенно во встроенных webview /
+     при быстром скролле) → пользователю кажется, что «фото пропали».
+     Догружаем все lazy-картинки по первому действию пользователя, а как
+     фолбэк — через 2.5с после загрузки. Начальное открытие при этом
+     остаётся лёгким (фото грузятся уже ПОСЛЕ первого экрана). */
+  (() => {
+    const lazies = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+    if (!lazies.length) return;
+    let forced = false;
+    const forceLoad = () => {
+      if (forced) return; forced = true;
+      lazies.forEach((img) => { img.loading = 'eager'; });
+    };
+    ['scroll', 'touchstart', 'pointermove', 'wheel'].forEach((e) =>
+      window.addEventListener(e, forceLoad, { passive: true, once: true })
+    );
+    window.addEventListener('load', () => setTimeout(forceLoad, 2500));
+  })();
+
   /* ---------- 2. Sticky header (тень при скролле) ---------- */
   const header = document.getElementById('header');
   const onScrollHeader = () => {
